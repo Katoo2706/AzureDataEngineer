@@ -78,3 +78,6 @@ Copy client_id, tenant_id
 # Case 2: Cluster Scoped Authentication (Via cluster)
 ## 1. Enable credential passthrough for user-level data access
 ![Add role assignment](media/cluster-scoped.png)
+> Same as Access Azure Data Lake using Service Principal, we need to grant access to creator account (who own cluster) in Storage account\
+> Even though I'm the owner, I do not have the role to read data from the storage account.
+- Assign role to Cluster: In storage account, choose Access Control (IAM) / Add / Add role assignment (Storage Blob Data Contributor)
