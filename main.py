@@ -1,16 +1,10 @@
-# This is a sample Python script.
+from source.azure_adls import AzureStorage
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+if __name__ == "__main__":
+    AzureStorage(storage_account="databrickcourseextdl",
+                 access_token="20Nasa6Jc9NxIAggWyXpU5WQD2N1eOU2QSPcnsXp9pyBMgt6SpkgZ6N8l1hjG2aH3L++QS9ZQKsW+AStZZgSGg=="
+                 ).upload_file_blob(
+        container_name="bronze",
+        local_path="./unity-catalog-resource",
+        local_file_name="drivers.json"
+    )

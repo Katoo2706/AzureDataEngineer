@@ -2,11 +2,12 @@
 <!-- TOC -->
 * [Data Lake & connect to Azure Data Lake Storage account](#data-lake--connect-to-azure-data-lake-storage-account)
   * [Create Azure Storage Account](#create-azure-storage-account)
-* [Method 1: Session Scoped Authentication (Via notebook)](#method-1-session-scoped-authentication-via-notebook)
-  * [1. Access Azure Data Lake storage using access key](#1-access-azure-data-lake-storage-using-access-key)
-  * [2. Access Azure Data Lake storage using Shared access signature](#2-access-azure-data-lake-storage-using-shared-access-signature)
-  * [3. Access Azure Data Lake using Service Principal](#3-access-azure-data-lake-using-service-principal)
-* [Method 2: Cluster Scoped Authentication (Via cluster)](#method-2-cluster-scoped-authentication-via-cluster)
+  * [Case 1: Session Scoped Authentication (Via notebook)](#case-1-session-scoped-authentication-via-notebook)
+    * [1. Access Azure Data Lake storage using access key](#1-access-azure-data-lake-storage-using-access-key)
+    * [2. Access Azure Data Lake storage using Shared access signature](#2-access-azure-data-lake-storage-using-shared-access-signature)
+    * [3. Access Azure Data Lake using Service Principal](#3-access-azure-data-lake-using-service-principal)
+  * [Case 2: Cluster Scoped Authentication (Via cluster)](#case-2-cluster-scoped-authentication-via-cluster)
+    * [1. Enable credential passthrough for user-level data access](#1-enable-credential-passthrough-for-user-level-data-access)
 <!-- TOC -->
 
 ## Create Azure Storage Account
@@ -22,9 +23,9 @@
 ![Storage account](media/storage_brower.png)
 [Download](https://azure.microsoft.com/en-us/products/storage/storage-explorer/)
 
-# Case 1: Session Scoped Authentication (Via notebook)
+## Case 1: Session Scoped Authentication (Via notebook)
 
-## 1. Access Azure Data Lake storage using access key
+### 1. Access Azure Data Lake storage using access key
 ```bash
 abfss://<container>@<storageAccountName>.dfs.core.windows.net
 ```
@@ -39,7 +40,7 @@ spark.conf.set(
 )
 ```
 
-## 2. Access Azure Data Lake storage using Shared access signature
+### 2. Access Azure Data Lake storage using Shared access signature
 - [Connect to Azure Data Lake Storage Gen2 using SAS token](https://learn.microsoft.com/en-us/azure/databricks/storage/azure-storage#sastokens:~:text=Active%20Directory%20application.-,Sas%C2%A0tokens,-You%20can%20configure)
 - [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://learn.microsoft.com/en-us/azure/storage/common/storage-sas-overview)
     ```python
@@ -56,7 +57,7 @@ Generate SAS token from container
 Otherwise, SAS can be generated from Microsoft Azure Storage Explorer
 ![SAS via Microsoft Azure Storage Explorer](media/sas_app.png)
 
-## 3. Access Azure Data Lake using Service Principal
+### 3. Access Azure Data Lake using Service Principal
 [Azure service principal](https://learn.microsoft.com/en-us/azure/databricks/storage/azure-storage#adls-gen2-oauth-20-with-azure-service-principals-notebook:~:text=or%20a%20notebook%3A-,Azure%C2%A0service%C2%A0principal,-Use%20the%20following)
 
 **Step to follow:**
@@ -75,8 +76,8 @@ Copy client_id, tenant_id
 - Assign role to app: In storage account, choose Access Control (IAM) / Add / Add role assignment (Storage Blob Data Contributor)
 ![Add role assignment](media/storage_blob.png)
 
-# Case 2: Cluster Scoped Authentication (Via cluster)
-## 1. Enable credential passthrough for user-level data access
+## Case 2: Cluster Scoped Authentication (Via cluster)
+### 1. Enable credential passthrough for user-level data access
 ![Add role assignment](media/cluster-scoped.png)
 > Same as Access Azure Data Lake using Service Principal, we need to grant access to creator account (who own cluster) in Storage account\
 > Even though I'm the owner, I do not have the role to read data from the storage account.

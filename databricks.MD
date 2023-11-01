@@ -44,13 +44,15 @@ Spark component
 ![Spark](./media/1691812998027.gif)
 
 ## Spark cheat sheet
-[Cheat sheet](slide/PySpark_SQL_Cheat_Sheet.pdf)
+[Cheat sheet](resource/PySpark_SQL_Cheat_Sheet.pdf)
 
-## Databricks Cluster
+## Databricks Cluster with Legacy Hive Metastore (Not Unity Catalog)
 [Databricks pricing (by DBU)](https://azure.microsoft.com/en-us/pricing/details/databricks/)
 Please use the following configuration for the databricks cluster.
 ```
 Cluster Type - Single Node
+
+Runtime version: LTS (Long-term support)
 
 Node Type - Standard_D3s_v2
 ```
@@ -80,3 +82,11 @@ Budget Details
 Alert conditions:
 - Actual - 90 (%) 
 - Alert recipients (email): katoo2706@gmail.com
+
+
+# Workflow / Jobs (Same as airflow)
+Databricks workflow
+![databricks-notebook-workflow.png](media%2Fdatabricks-notebook-workflow.png)
+
+Config task to link with notebook
+![databricks-tasks.png](media%2Fdatabricks-tasks.png)
