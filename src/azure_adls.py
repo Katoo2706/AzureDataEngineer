@@ -73,7 +73,7 @@ class AzureStorage:
 
         :param container_name:
         :param local_path:
-        :return:
+        :return: message
         """
         for root, _, files in os.walk(local_path):
             for file in files:

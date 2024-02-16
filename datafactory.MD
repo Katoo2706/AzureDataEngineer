@@ -1,11 +1,11 @@
-# Azure Data Factory
-#### Learning resource:
+## 3. Azure Data Factory
+### Learning resource:
 - **Tutorial**: https://learn.microsoft.com/en-us/azure/data-factory/data-factory-tutorials
 - **Video**: https://www.youtube.com/channel/UC2S0k7NeLcEm5_IhHUwpN0g/featured
 
 ![data_factories.png](media%2Fdata_factories.png)
 
-#### Create CI/CD with git
+### Create CI/CD with git
 ![adf.png](media%2Fadf.png)
 
 Or after launching the Studio, choose Linked service and set up the git repo
@@ -34,7 +34,7 @@ To use Managed Service Identity
 - Config the DAGs
 ![adf-DAGs.png](media%2Fadf-DAGs.png)
 
-#### Add Get metadata to check if file exists
+### Add Get metadata to check if file exists
 
 | Set up the storage account                | Get parameter as directory                 |
 |-------------------------------------------|--------------------------------------------|
@@ -46,5 +46,5 @@ To use Managed Service Identity
 Then, click True (edit) and paste the Notebook into Window
 ![adf-if-true.png](media%2Fadf-if-true.png)
 
-#### Final: Create master execute pipeline
+### Final: Create master execute pipeline
 ![adf-execute-pipeline.png](media%2Fadf-execute-pipeline.png)

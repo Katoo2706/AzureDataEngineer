@@ -59,16 +59,17 @@ Node Type - Standard_D3s_v2
 ### Create Databricks Cluster
 Databricks / Compute / Create compute (with below configuration):
 - Policy: Unrestricted (Can create custom policy): [Cluster policy definitions](https://adb-1999765807836905.5.azuredatabricks.net/?o=1999765807836905#create/cluster) \
-    For example: Set up value for spark version ![Choose the policy](media/policy.png) with below policy config
-    ```
-    {
-      "spark_version": {
-        "type": "fixed",
-        "value": "auto:latest-lts",
-        "hidden": true  # to hide the version
-      }
-    }
-  ```
+
+For example: Set up value for spark version ![Choose the policy](media/policy.png) with below policy config
+```
+{
+  "spark_version": {
+    "type": "fixed",
+    "value": "auto:latest-lts",
+    "hidden": true  # to hide the version
+  }
+}
+```
 - Access mode: No isolation shared
 - Node type: Standard_DS3_v2 
 - Termination time: 18 minutes (saving money for activity)
